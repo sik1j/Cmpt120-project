@@ -12,8 +12,12 @@ def recolorImage(img,color):
   # if r<255 or g<255 or b<255 then not white
   # set rgb to color, r=color[0], g=color[1], b=color=[2]
   # use cmpt120image.getBlackImage()
-  
-  img[0][0]
+  image_width = 
+  image_length = 
+  for i in range():
+    for x in range():
+      if img[i][x] != [255, 255, 255]:
+        img[i][x] = color
 # Sikij
 def minify(img):
   # Add your code here
