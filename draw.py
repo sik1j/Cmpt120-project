@@ -14,10 +14,10 @@ def recolorImage(img,color):
   # use cmpt120image.getBlackImage()
   image_width = 
   image_length = 
-  for i in range():
-    for x in range():
-      if img[i][x] != [255, 255, 255]:
-        img[i][x] = color
+  for x in range():
+    for y in range():
+      if img[x][y] != [255, 255, 255]:
+        img[x][y] = color
 # Sikij
 def minify(img):
   # Add your code here
