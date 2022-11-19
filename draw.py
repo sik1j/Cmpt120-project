@@ -9,18 +9,22 @@ import random
 
 # Jon
 def recolorImage(img,color):
-  # if r<255 or g<255 or b<255 then not white
-  # set rgb to color, r=color[0], g=color[1], b=color=[2]
-  # use cmpt120image.getBlackImage()
+  # saves the height and width of the image
   image_height = len(img)
   image_width = len(img[0])
+  # creates an mage to be modified
   new_img = cmpt120image.getBlackImage(image_width, image_height)
+  # loops to go through all pixels of the image
   for x in range(image_height):
     for y in range(image_width):
+      # checks if the pixel is a color or white space
       if img[x][y] != [255, 255, 255]:
+        # sets the pixel to the desried color
         new_img[x][y] = color
       else:
+        # sets the pixel to white space
         new_img[x][y] = [255, 255, 255]
+  # returns the new image
   return new_img
 # Sikij
 def minify(img):
