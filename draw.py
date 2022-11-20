@@ -8,6 +8,7 @@ import cmpt120image
 import random
 
 # Jon
+
 def recolorImage(img,color):
   ###outline in the color for some reason###
   # saves the height and width of the image
@@ -27,10 +28,34 @@ def recolorImage(img,color):
         new_img[y][x] = [255, 255, 255]
   # returns the new image
   return new_img
+
 # Sikij
+
+
 def minify(img):
-  # Add your code here
-  
+    # Add your code here
+    image_height = len(img)
+    image_width = len(img[0])
+
+    new_img = cmpt120image.getBlackImage(image_width/2, image_height/2)
+
+    for row in range(image_height/2):
+        for column in range(image_width/2):
+            color_1 = img[row][column]
+            color_2 = img[row][column+1]
+            color_3 = img[row+1][column]
+            color_4 = img[row+1][column+1]
+            average = [0, 0, 0]
+
+            for i in range(3):
+                average[i] = (color_1[i] + color_2[i] +
+                              color_3[i] + color_4[i])/4
+
+            new_img[row][column] = average
+
+    return new_img
+
+
 def mirror(img):
   # saves the height and width of the image
   image_height = len(img)
