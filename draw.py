@@ -64,7 +64,7 @@ def mirror(img):
   for y in range(image_height):
     for x in range(image_width):
       # sets the pixel on the flip side to the current pixel
-      c = image_width - x
+      c = image_width - (x+1)
       new_img[y][c] = img[y][x]
   # returns the new image
   return new_img
