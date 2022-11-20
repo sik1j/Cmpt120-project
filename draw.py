@@ -65,29 +65,36 @@ def mirror(img):
   # loops to go through all pixels of the image
   for y in range(image_height):
     for x in range(image_width):
-      #sets the pixel on the flip side to the current pixel
+      # sets the pixel on the flip side to the current pixel
       c = image_width - x
       new_img[y][c] = img[y][x]
   # returns the new image
   return new_img
   
 def drawItem(canvas,item,row,col):
+  # takes the arrray format of the item
   img = cmpt120image.getImage(item)
+  # saves the sizes of the image and canvas
   image_height = len(img)
   image_width = len(img[0])
   canvas_height = len(canvas)
   canvas_width = len(canvas[0])
   
+  #for loops to go through every pixel of the size of the image
   for y in range(row):
     for x in range(col):
+      # checks if the pixel is white space
       if img[y][x] != [255, 255, 255]:
+        #s ets the canvas pixel to the appropriate image pixel
         canvas[y+row][x+col] = img[y][x]
-      
+  #returns the drawn on canvas
   return canvas
 
 def distributeItems(canvas,item,n): 
-  #loop to draw n items
+  # loop to draw n items
   for i in range(n):
+    # randomly chooses location
     row = random.randint(0, 300)
     col = random.randint(0, 400)
+    #draws the item onto the canvas
     drawItem(canvas, item, row, col)
