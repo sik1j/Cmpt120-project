@@ -2,6 +2,9 @@
 # Jonathan Chan 301553184
 # Sikij Karki 301
 
+＃これはいちばんさいきょうのコヂングかだいですね
+＃パンダかのじょのつぎにかわいい
+
 import cmpt120image
 import random
 
