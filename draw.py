@@ -2,8 +2,6 @@
 # Jonathan Chan 301553184
 # Sikij Karki 301
 
-# your mother is a very nice woman
-
 import cmpt120image
 import random
 
@@ -55,7 +53,7 @@ def minify(img):
 
     return new_img
 
-
+# Jon
 def mirror(img):
   # saves the height and width of the image
   image_height = len(img)
@@ -70,7 +68,8 @@ def mirror(img):
       new_img[y][c] = img[y][x]
   # returns the new image
   return new_img
-  
+
+# Jon
 def drawItem(canvas,item,row,col):
   # takes the arrray format of the item
   img = cmpt120image.getImage(item)
@@ -90,6 +89,7 @@ def drawItem(canvas,item,row,col):
   #returns the drawn on canvas
   return canvas
 
+# Jon
 def distributeItems(canvas,item,n): 
   # loop to draw n items
   for i in range(n):
