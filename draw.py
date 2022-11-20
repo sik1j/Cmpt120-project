@@ -16,8 +16,8 @@ def recolorImage(img,color):
   # creates an mage to be modified
   new_img = cmpt120image.getBlackImage(image_width, image_height)
   # loops to go through all pixels of the image
-  for x in range(image_height):
-    for y in range(image_width):
+  for y in range(image_height):
+    for x in range(image_width):
       # checks if the pixel is a color or white space
       if img[y][x] != [255, 255, 255]:
         # sets the pixel to the desried color
@@ -38,8 +38,8 @@ def mirror(img):
   # creates an mage to be modified
   new_img = cmpt120image.getBlackImage(image_width, image_height)
   # loops to go through all pixels of the image
-  for x in range(image_height):
-    for y in range(image_width):
+  for y in range(image_height):
+    for x in range(image_width):
       #sets the pixel on the flip side to the current pixel
       c = image_width - x
       new_img[y][c] = img[y][x]
@@ -47,8 +47,19 @@ def mirror(img):
   return new_img
   
 def drawItem(canvas,item,row,col):
-  # Add your code here
+  img = cmpt120image.getImage(item)
+  image_height = len(img)
+  image_width = len(img[0])
+  canvas_height = len(canvas)
+  canvas_width = len(canvas[0])
   
+  for y in range(row):
+    for x in range(col):
+      if img[y][x] != [255, 255, 255]:
+        canvas[y+row][x+col] = img[y][x]
+      
+  return canvas
+
 def distributeItems(canvas,item,n): 
   #loop to draw n items
   for i in range(n):
