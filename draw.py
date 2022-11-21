@@ -1,8 +1,6 @@
 # Your header
 # Jonathan Chan 301553184
-# Sikij Karki 301
-
-# your mother is a very nice woman
+# Sikij Karki 301546437
 
 import cmpt120image
 import random
@@ -98,8 +96,3 @@ def distributeItems(canvas, item, n):
 
 
 canvas = cmpt120image.getWhiteImage(400, 300)
-
-img = cmpt120image.getImage('images/tipi.png')
-cmpt120image.showImage(minify(img))
-input()
-cmpt120image.showImage(img)
