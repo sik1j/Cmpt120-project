@@ -1,13 +1,14 @@
-# Your header
+# draw
 # Jonathan Chan 301553184
 # Sikij Karki 301546437
+＃これはいちばんさいきょうのコヂングかだいですね
+＃パンダかのじょのつぎにかわいい
+
 
 import cmpt120image
 import random
 
 # Jon
-
-
 def recolorImage(img, color):
     ###outline in the color for some reason###
     # saves the height and width of the image
@@ -29,8 +30,6 @@ def recolorImage(img, color):
     return new_img
 
 # Sikij
-
-
 def minify(img):
     # Add your code here
     new_image_height = int(len(img)/2)
@@ -55,44 +54,50 @@ def minify(img):
 
     return new_img
 
-
+# Jon
 def mirror(img):
-    # saves the height and width of the image
-    image_height = len(img)
-    image_width = len(img[0])
-    # creates an mage to be modified
-    new_img = cmpt120image.getBlackImage(image_width, image_height)
-    # loops to go through all pixels of the image
-    for y in range(image_height):
-        for x in range(image_width):
-            # sets the pixel on the flip side to the current pixel
-            c = image_width - x - 1
-            new_img[y][c] = img[y][x]
-    # returns the new image
-    return new_img
+  # saves the height and width of the image
+  image_height = len(img)
+  image_width = len(img[0])
+  # creates an mage to be modified
+  new_img = cmpt120image.getBlackImage(image_width, image_height)
+  # loops to go through all pixels of the image
+  for y in range(image_height):
+    for x in range(image_width):
+      # sets the pixel on the flip side to the current pixel
+      c = image_width - (x+1)
+      new_img[y][c] = img[y][x]
+  # returns the new image
+  return new_img
 
+# Jon
+def drawItem(canvas,item,row,col):
+  # takes the arrray format of the item
+  img = cmpt120image.getImage(item)
+  # saves the sizes of the image and canvas
+  image_height = len(img)
+  image_width = len(img[0])
+  canvas_height = len(canvas)
+  canvas_width = len(canvas[0])
+  
+  #for loops to go through every pixel of the size of the image
+  for y in range(row):
+    for x in range(col):
+      # checks if the pixel is white space
+      if img[y][x] != [255, 255, 255]:
+        #s ets the canvas pixel to the appropriate image pixel
+        canvas[y+row][x+col] = img[y][x]
+  #returns the drawn on canvas
+  return canvas
 
-def drawItem(canvas, item, row, col):
-    img = cmpt120image.getImage(item)
-    image_height = len(img)
-    image_width = len(img[0])
-    canvas_height = len(canvas)
-    canvas_width = len(canvas[0])
-
-    for y in range(row):
-        for x in range(col):
-            if img[y][x] != [255, 255, 255]:
-                canvas[y+row][x+col] = img[y][x]
-
-    return canvas
-
-
-def distributeItems(canvas, item, n):
-    # loop to draw n items
-    for i in range(n):
-        row = random.randint(0, 300)
-        col = random.randint(0, 400)
-        drawItem(canvas, item, row, col)
-
+# Jon
+def distributeItems(canvas,item,n): 
+  # loop to draw n items
+  for i in range(n):
+    # randomly chooses location
+    row = random.randint(0, 300)
+    col = random.randint(0, 400)
+    #draws the item onto the canvas
+    drawItem(canvas, item, row, col)
 
 canvas = cmpt120image.getWhiteImage(400, 300)
