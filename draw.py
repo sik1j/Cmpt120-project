@@ -27,8 +27,6 @@ def recolorImage(img, color):
     return new_img
 
 # <img> width and height are halved
-
-
 def minify(img):
     # returns image at half sizs
     new_image_height = int(len(img)/2)
@@ -59,8 +57,6 @@ def minify(img):
     return new_img
 
 # Mirrors <img> over the vertical from left to right
-
-
 def mirror(img):
     # saves the height and width of the image
     image_height = len(img)
@@ -77,8 +73,6 @@ def mirror(img):
     return new_img
 
 # draws <item> onto the <canvas> with <item> top left(0,0) placed at (<row>,<col>)
-
-
 def drawItem(canvas, item, row, col):
     # takes the arrray format of the item
     img = item
