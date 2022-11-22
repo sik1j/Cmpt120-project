@@ -1,4 +1,4 @@
-# draw
+# draw.py
 # Jonathan Chan 301553184
 # Sikij Karki 301546437
 
@@ -39,7 +39,7 @@ def minify(img):
     # loop through all pixels in new image canvas
     for row in range(new_image_height):
         for column in range(new_image_width):
-            # *2 is used to go through half the pixel of the original image
+            # row*2 & col*2 is used to go through half the pixel of the original image
             color_1 = img[row*2][column*2]
             color_2 = img[row*2][column*2+1]
             color_3 = img[row*2+1][column*2]
