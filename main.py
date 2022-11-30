@@ -47,6 +47,7 @@ ENV = initEnv()
     # requires 2 options back and continue
     # asks how many rounds to be played
     # display x images n times on screen with at least 1 of the right image (random colored too) and play sound
+        # use distributeItems x times
     # "Listen to the word. How many of them can you find?" (accepts only int)
     # inform user if they are right or wrong (if wrong show the correct number of instences)
     # "Press enter to continue."
