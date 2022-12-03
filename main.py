@@ -105,24 +105,30 @@ def learn():
     # inform user if they are right or wrong (if wrong show the correct number of instences)
     # "Press enter to continue."
     # output menu at the end
-    
+
+# creates the canvas for the user to view
 def play_canvas(canvas, item):
     image_num = random.randint(1, 10)
     new_canvas = draw.distributeItems(canvas, item, image_num)
 return new_canvas, item, image_num
 
+# 
 def play():
     file = open('blackfoot.csv')
+    # outputs how the game works to the user
     print('PLAY')
     print('This is a seek and find game. You will hear a word. Count how many of that item you find!')
     
+    # asks the user and ensures valid input for how many lines to play
     rounds = input('How many rounds would you like to play?')
     num_rounds = validatedInput(rounds, 0, TOTAL_CSV_LINES)
     
+    # creates a list of all items availale
     all_items = []
     for line in file:
         all_items.append(line)
     
+    # creates a list of items within the learning count
     items = []
     count = 0
     while count < learnCount:
@@ -133,6 +139,7 @@ def play():
     
     # plays the rounds
     for i in range(0,num_rounds):
+        # creates a list of the items that will be shown in the round
         round_items = []
         count = 0
         while count < 3:
@@ -140,19 +147,25 @@ def play():
             if items[randItemIndex] not in rounds_items:
                 round_items.append(items[randItemIndex])
                 count += 1
+                
+        # picks a random item to be the english name of the answer image
         rand_num = randoom.randint(0, len(round_items)-1)
         answer_item = round_items[rand_num]
-
+        
+        # creates a list of the image data
         round_images = []
         for x in range(len(round_items)):
             item = round_items[x]
             image = draw.cmpt120image.getImage(f'images/{item}.png')
             round_images.append(image)
-        
+            
+        # creates an associated array with the image name being the key for the pixel data
         round_data = {:}
         for x in range(len(round_images)):
-            round_data.append(round_image[x]:round_item[x])
+            round_data.append(round_item[x]:round_image[x])
         
+        # generates the canvas
+        # creates an associated array of the pixel data being the key for the num of repeats
         canvas = draw.cmpt120image.getWhiteImage(400,300)
         answer_data = {:}
         for x in range(len(round_images)):
@@ -160,10 +173,13 @@ def play():
             answer_data.append(item:num_repeats)
         draw.cmpt120image.showImage(canvas)
         
+        # grabs the answer
         image_pixels = round_data[answer_item]
         answer = answer_data[image_pixels]
         
+        # plays the sound for the user
         playSound(answer_item, ENV)
+        # takes user answer and compares it to the answer
         user_answer = input('Listen to the word. How many of them can you find?')
         if user_asnwer == answer:
             input("That's right! Press enter to continue.")
