@@ -1,5 +1,6 @@
 import pygame
 import draw
+import random
 
 ###############################################################
 # Keep this block at the beginning of your code. Do not modify.
@@ -104,7 +105,72 @@ def learn():
     # inform user if they are right or wrong (if wrong show the correct number of instences)
     # "Press enter to continue."
     # output menu at the end
+    
+def play_canvas(canvas, item):
+    image_num = random.randint(1, 10)
+    new_canvas = draw.distributeItems(canvas, item, image_num)
+return new_canvas, item, image_num
 
+def play():
+    file = open('blackfoot.csv')
+    print('PLAY')
+    print('This is a seek and find game. You will hear a word. Count how many of that item you find!')
+    
+    rounds = input('How many rounds would you like to play?')
+    num_rounds = validatedInput(rounds, 0, TOTAL_CSV_LINES)
+    
+    all_items = []
+    for line in file:
+        all_items.append(line)
+    
+    items = []
+    count = 0
+    while count < learnCount:
+        randItemIndex = random.randint(0, learnCount-1)
+        if all_items[randItemIndex] not in items:
+            items.append(all_items[randItemIndex])
+            count += 1
+    
+    # plays the rounds
+    for i in range(0,num_rounds):
+        round_items = []
+        count = 0
+        while count < 3:
+            randItemIndex = random.randint(0, learnCount-1)
+            if items[randItemIndex] not in rounds_items:
+                round_items.append(items[randItemIndex])
+                count += 1
+        rand_num = randoom.randint(0, len(round_items)-1)
+        answer_item = round_items[rand_num]
+
+        round_images = []
+        for x in range(len(round_items)):
+            item = round_items[x]
+            image = draw.cmpt120image.getImage(f'images/{item}.png')
+            round_images.append(image)
+        
+        round_data = {:}
+        for x in range(len(round_images)):
+            round_data.append(round_image[x]:round_item[x])
+        
+        canvas = draw.cmpt120image.getWhiteImage(400,300)
+        answer_data = {:}
+        for x in range(len(round_images)):
+            canvas, item, num_repeats = play_canvas(canvas, round_images[x])
+            answer_data.append(item:num_repeats)
+        draw.cmpt120image.showImage(canvas)
+        
+        image_pixels = round_data[answer_item]
+        answer = answer_data[image_pixels]
+        
+        playSound(answer_item, ENV)
+        user_answer = input('Listen to the word. How many of them can you find?')
+        if user_asnwer == answer:
+            input("That's right! Press enter to continue.")
+        else:
+            input("That's wrong. The right answer is {}. Press enter to continue".format(answer))
+        
+        
 # Settings
     # ouput message explaining what the option does
     # requires 2 options back and continue
