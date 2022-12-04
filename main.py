@@ -44,7 +44,7 @@ def validatedInput(string, min, max):
         try:
             # might need to validated that input isn't a float as well
             value = int(input(string))
-            print(value)
+            # print(value)
             while value < min or value > max:
                 print(f'Please choose a number from {min} to {max}')
                 value = int(input(string))
