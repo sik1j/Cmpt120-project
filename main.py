@@ -108,7 +108,7 @@ def learn():
 
 # creates the canvas for the user to view
 def play_canvas(canvas, item):
-    image_num = random.randint(1, 10)
+    image_num = random.randint(1, 4)
     new_canvas = draw.distributeItems(canvas, item, image_num)
 return new_canvas, item, image_num
 
