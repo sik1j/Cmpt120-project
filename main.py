@@ -122,8 +122,7 @@ def play():
     print('This is a seek and find game. You will hear a word. Count how many of that item you find!')
     
     # asks the user and ensures valid input for how many lines to play
-    rounds = input('How many rounds would you like to play?')
-    num_rounds = validatedInput(rounds, 0, sys.maxsize)
+    num_rounds = validatedInput('How many rounds would you like to play?', 0, sys.maxsize)
     
     # creates a list of all items availale
     all_items = []
@@ -133,8 +132,8 @@ def play():
     # creates a list of items within the learning count
     items = []
     count = 0
-    while count < learnCount:
-        randItemIndex = random.randint(0, learnCount-1)
+    while count < gameState.get('learnCount'):
+        randItemIndex = random.randint(0, gameState.get('learnCount')-1)
         if all_items[randItemIndex] not in items:
             items.append(all_items[randItemIndex])
             count += 1
@@ -145,7 +144,7 @@ def play():
         round_items = []
         count = 0
         while count < 3:
-            randItemIndex = random.randint(0, learnCount-1)
+            randItemIndex = random.randint(0, gameState.get('learnCount')-1)
             if items[randItemIndex] not in round_items:
                 round_items.append(items[randItemIndex])
                 count += 1
@@ -191,14 +190,14 @@ def play():
         draw.cmpt120image.showImage(canvas)
         
         # grabs the answer
-        image_pixels = round_data[answer_item]
-        answer = answer_data[image_pixels]
+        #image_pixels = round_data[answer_item]
+        answer = answer_data[answer_item]
         
         # plays the sound for the user
         playSound(answer_item, ENV)
         # takes user answer and compares it to the answer
         user_answer = input('Listen to the word. How many of them can you find?')
-        if user_asnwer == answer:
+        if user_answer == answer:
             input("That's right! Press enter to continue.")
         else:
             input("That's wrong. The right answer is {}. Press enter to continue".format(answer))
