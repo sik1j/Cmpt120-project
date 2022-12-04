@@ -160,17 +160,19 @@ def play():
             round_images.append(image)
             
         # creates an associated array with the image name being the key for the pixel data
-        round_data = {:}
+        round_data = {}
         for x in range(len(round_images)):
-            round_data.append(round_items[x]:round_image[x])
+            # round_data.append(round_items[x]:round_image[x])
+            round_data[round_items[x]] = round_image[x]
         
         # generates the canvas
         # creates an associated array of the pixel data being the key for the num of repeats
         canvas = draw.cmpt120image.getWhiteImage(400,300)
-        answer_data = {:}
+        answer_data = {}
         for x in range(len(round_images)):
             canvas, item, num_repeats = play_canvas(canvas, round_images[x])
-            answer_data.append(item:num_repeats)
+            # answer_data.append(item:num_repeats)
+            answer_data[item] = num_repeats
         draw.cmpt120image.showImage(canvas)
         
         # grabs the answer
