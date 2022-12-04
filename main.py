@@ -144,12 +144,12 @@ def play():
         count = 0
         while count < 3:
             randItemIndex = random.randint(0, learnCount-1)
-            if items[randItemIndex] not in rounds_items:
+            if items[randItemIndex] not in round_items:
                 round_items.append(items[randItemIndex])
                 count += 1
                 
         # picks a random item to be the english name of the answer image
-        rand_num = randoom.randint(0, len(round_items)-1)
+        rand_num = random.randint(0, len(round_items)-1)
         answer_item = round_items[rand_num]
         
         # creates a list of the image data
@@ -162,7 +162,7 @@ def play():
         # creates an associated array with the image name being the key for the pixel data
         round_data = {:}
         for x in range(len(round_images)):
-            round_data.append(round_item[x]:round_image[x])
+            round_data.append(round_items[x]:round_image[x])
         
         # generates the canvas
         # creates an associated array of the pixel data being the key for the num of repeats
