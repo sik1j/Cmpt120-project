@@ -1,6 +1,7 @@
 import pygame
 import draw
 import random
+import sys
 
 ###############################################################
 # Keep this block at the beginning of your code. Do not modify.
@@ -110,7 +111,8 @@ def learn():
 def play_canvas(canvas, item):
     image_num = random.randint(1, 4)
     new_canvas = draw.distributeItems(canvas, item, image_num)
-return new_canvas, item, image_num
+    return new_canvas, image_num
+    # return new_canvas, item, image_num
 
 # 
 def play():
@@ -121,7 +123,7 @@ def play():
     
     # asks the user and ensures valid input for how many lines to play
     rounds = input('How many rounds would you like to play?')
-    num_rounds = validatedInput(rounds, 0, TOTAL_CSV_LINES)
+    num_rounds = validatedInput(rounds, 0, sys.maxsize)
     
     # creates a list of all items availale
     all_items = []
@@ -159,11 +161,11 @@ def play():
             image = draw.cmpt120image.getImage(f'images/{item}.png')
             round_images.append(image)
             
-        # creates an associated array with the image name being the key for the pixel data
-        round_data = {}
-        for x in range(len(round_images)):
-            # round_data.append(round_items[x]:round_image[x])
-            round_data[round_items[x]] = round_image[x]
+        # # creates an associated array with the image name being the key for the pixel data
+        # round_data = {}
+        # for x in range(len(round_images)):
+        #    # round_data.append(round_items[x]:round_image[x])
+        #    round_data[round_items[x]] = round_image[x]
         
         # generates the canvas
         # creates an associated array of the pixel data being the key for the num of repeats
@@ -172,7 +174,8 @@ def play():
         for x in range(len(round_images)):
             canvas, item, num_repeats = play_canvas(canvas, round_images[x])
             # answer_data.append(item:num_repeats)
-            answer_data[item] = num_repeats
+            # answer_data[item] = num_repeats
+            answer_data[round_items[x]] = num_repeats
         draw.cmpt120image.showImage(canvas)
         
         # grabs the answer
