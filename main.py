@@ -159,6 +159,18 @@ def play():
         for x in range(len(round_items)):
             item = round_items[x]
             image = draw.cmpt120image.getImage(f'images/{item}.png')
+            
+            true_false = [True, False]
+            if random.choice(true_false) == True:
+                # recolor
+                rand_color = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
+                image = draw.recolorImage(image, rand_color)
+            if random.choice(true_false) == True:
+                #minify
+                image = draw.minify(image)
+            if random.choice(true_false) == True:
+                #mirror
+                image = draw.mirror(image)
             round_images.append(image)
             
         # # creates an associated array with the image name being the key for the pixel data
