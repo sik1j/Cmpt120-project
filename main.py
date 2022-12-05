@@ -187,7 +187,7 @@ def play():
         # plays the sound for the user
         playSound(answer_item, ENV)
         # takes user answer and compares it to the answer
-        user_answer = input('Listen to the word. How many of them can you find?')
+        user_answer = validatedInput('Listen to the word. How many of them can you find?', 0, 4)
         if user_answer == answer:
             input("That's right! Press enter to continue.")
         else:
