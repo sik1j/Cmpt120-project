@@ -1,3 +1,7 @@
+# main.py
+# Jonathan Chan 301553184
+# Sikij Karki 301546437
+
 import pygame
 import draw
 import random
