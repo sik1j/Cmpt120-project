@@ -112,7 +112,7 @@ def play_canvas(canvas, item):
     image_num = random.randint(1, 4)
     new_canvas = draw.distributeItems(canvas, item, image_num)
     return new_canvas, image_num
-    # return new_canvas, item, image_num
+    
 
 # 
 def play():
@@ -171,26 +171,17 @@ def play():
                 #mirror
                 image = draw.mirror(image)
             round_images.append(image)
-            
-        # # creates an associated array with the image name being the key for the pixel data
-        # round_data = {}
-        # for x in range(len(round_images)):
-        #    # round_data.append(round_items[x]:round_image[x])
-        #    round_data[round_items[x]] = round_image[x]
         
         # generates the canvas
         # creates an associated array of the pixel data being the key for the num of repeats
         canvas = draw.cmpt120image.getWhiteImage(400,300)
         answer_data = {}
         for x in range(len(round_images)):
-            canvas, item, num_repeats = play_canvas(canvas, round_images[x])
-            # answer_data.append(item:num_repeats)
-            # answer_data[item] = num_repeats
+            canvas, num_repeats = play_canvas(canvas, round_images[x])
             answer_data[round_items[x]] = num_repeats
         draw.cmpt120image.showImage(canvas)
         
         # grabs the answer
-        #image_pixels = round_data[answer_item]
         answer = answer_data[answer_item]
         
         # plays the sound for the user
