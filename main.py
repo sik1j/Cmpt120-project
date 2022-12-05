@@ -127,7 +127,7 @@ def play():
     # creates a list of all items availale
     all_items = []
     for line in file:
-        all_items.append(line)
+        all_items.append(line.split()[0])
     
     # creates a list of items within the learning count
     items = []
