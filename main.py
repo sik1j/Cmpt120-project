@@ -100,7 +100,8 @@ def learn():
     # ouput message explaining what the option does
     # requires 2 options back and continue
     # asks how many rounds to be played
-    # display x images n times on screen with at least 1 of the right image (random colored too) and play sound
+    # display x images n times on screen with at least 1 
+    # of the right image (random colored too) and play sound
         # use distributeItems x times
     # "Listen to the word. How many of them can you find?" (accepts only int)
     # inform user if they are right or wrong (if wrong show the correct number of instences)
@@ -119,7 +120,9 @@ def play():
     file = open('blackfoot.csv')
     # outputs how the game works to the user
     print('PLAY')
-    print('This is a seek and find game. You will hear a word. Count how many of that item you find!')
+    print(
+        'This is a seek and find game. You will hear a word. Count how many of that item you find!'
+        )
     
     # asks the user and ensures valid input for how many lines to play
     num_rounds = validatedInput('How many rounds would you like to play?', 0, sys.maxsize)
@@ -162,7 +165,9 @@ def play():
             true_false = [True, False]
             if random.choice(true_false) == True:
                 # recolor
-                rand_color = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
+                rand_color = [
+                    random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
+                    ]
                 image = draw.recolorImage(image, rand_color)
             if random.choice(true_false) == True:
                 #minify
@@ -200,12 +205,16 @@ def settings():
     learnCount = gameState.get('learnCount')
     maxLines = gameState.get('TOTAL_CSV_LINES')
     print(f'You are currently learning {learnCount} words.')
-    newLearnCount = validatedInput(f'How many would you like to learn? (3-{maxLines})', 3, maxLines)
+    newLearnCount = validatedInput(
+        f'How many would you like to learn? (3-{maxLines})', 3, maxLines
+        )
 
     # ensures user is learning min 3 or max all words in csv
     while newLearnCount < 3 or newLearnCount > maxLines:
         print(f'{newLearnCount} is not allowed. Please choose again.')
-        newLearnCount = validatedInput(f'How many would you like to learn? (3-{maxLines})', 3, maxLines)
+        newLearnCount = validatedInput(
+            f'How many would you like to learn? (3-{maxLines})', 3, maxLines
+        )
     gameState['learnCount'] = newLearnCount
 
 # Exit
