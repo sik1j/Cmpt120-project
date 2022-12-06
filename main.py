@@ -96,26 +96,15 @@ def learn():
         draw.cmpt120image.showImage(canvas)
         input(f'{index}. Press Enter to continue... ') 
 
+        
 # Play
-    # ouput message explaining what the option does
-    # requires 2 options back and continue
-    # asks how many rounds to be played
-    # display x images n times on screen with at least 1 
-    # of the right image (random colored too) and play sound
-        # use distributeItems x times
-    # "Listen to the word. How many of them can you find?" (accepts only int)
-    # inform user if they are right or wrong (if wrong show the correct number of instences)
-    # "Press enter to continue."
-    # output menu at the end
-
 # creates the canvas for the user to view
 def play_canvas(canvas, item):
     image_num = random.randint(1, 4)
     new_canvas = draw.distributeItems(canvas, item, image_num)
     return new_canvas, image_num
-    
 
-# 
+# Plays the seek and find game
 def play():
     file = open('blackfoot.csv')
     # outputs how the game works to the user
@@ -162,6 +151,7 @@ def play():
             item = round_items[x]
             image = draw.cmpt120image.getImage(f'images/{item}.png')
             
+            # randomly picks if the image should be recolored, mirrored or minified
             true_false = [True, False]
             if random.choice(true_false) == True:
                 # recolor
@@ -175,6 +165,7 @@ def play():
             if random.choice(true_false) == True:
                 #mirror
                 image = draw.mirror(image)
+                
             round_images.append(image)
         
         # generates the canvas
@@ -182,6 +173,7 @@ def play():
         canvas = draw.cmpt120image.getWhiteImage(400,300)
         answer_data = {}
         for x in range(len(round_images)):
+            # adds to the canvas and stores the number or times the image is drawn
             canvas, num_repeats = play_canvas(canvas, round_images[x])
             answer_data[round_items[x]] = num_repeats
         draw.cmpt120image.showImage(canvas)
@@ -191,6 +183,7 @@ def play():
         
         # plays the sound for the user
         playSound(answer_item, ENV)
+        
         # takes user answer and compares it to the answer
         user_answer = validatedInput('Listen to the word. How many of them can you find?', 0, 4)
         if user_answer == answer:
